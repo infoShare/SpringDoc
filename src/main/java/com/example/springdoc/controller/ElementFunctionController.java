@@ -9,7 +9,6 @@ import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springdoc.core.annotations.RouterOperation;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +20,6 @@ import java.util.function.Supplier;
 
 @Component
 @RequiredArgsConstructor
-@Tag(name = "Element Function Controller", description = "Service for creating and retrieving elements using functions")
 public class ElementFunctionController {
 
     private final ElementService elementService;
