@@ -1,0 +1,59 @@
+## Application Configuration
+server:
+  port: 8080
+
+## Spring Boot Actuator Configuration
+management:
+  server:
+    port: 18080
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+    shutdown:
+      enabled: true
+
+## Spring Boot Actuator Info Endpoint Customization
+info:
+  # static properties
+  app:
+    name: Element management
+    description: System for element management
+  # build properties from maven
+  build:
+    groupId: '@project.groupId@'
+    artifact: '@project.artifactId@'
+    name: '@project.name@'
+    version: '@project.version@'
+  # environment variables
+  env:
+    java:
+      vendor: ${java.specification.vendor}
+      vm-name: ${java.vm.name}
+      runtime-version: ${java.runtime.version}
+
+## Logging configuration
+logging:
+  logback:
+    rollingpolicy:
+      file-name-pattern: ${LOG_FILE}.%d{yyyy-MM-dd}.%i.gz
+      max-file-size: 50MB
+      total-size-cap: 2GB
+  level:
+    ROOT: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss:SSS} - [%thread] %logger : %msg%n"
+  file:
+    name: logs/@project.name@.log
+
+## Swagger configuration
+springdoc:
+  packagesToScan: com.example.springdoc
+  pathsToMatch: /api/**
+  swagger-ui:
+    disable-swagger-default-url: true
+
