@@ -25,14 +25,14 @@ public class ElementFunctionController {
     private final ElementService elementService;
 
     @Bean
-    @RouterOperation(operation = @Operation(description = "Create element", operationId = "createElement", tags = "element",
+    @RouterOperation(operation = @Operation(description = "Create element", operationId = "createElementFunction", tags = "element",
             responses = @ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = Element.class)))))
     public Function<String, Element> createElement() {
         return elementService::createElement;
     }
 
     @Bean
-    @RouterOperation(operation = @Operation(description = "Get element", operationId = "getElement", tags = "element",
+    @RouterOperation(operation = @Operation(description = "Get element", operationId = "getElementFunction", tags = "element",
             parameters = {@Parameter(in = ParameterIn.PATH, name = "id", description = "id")},
             responses = @ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = Element.class)))))
     public Function<Long, Element> getElement() {
@@ -40,7 +40,7 @@ public class ElementFunctionController {
     }
 
     @Bean
-    @RouterOperation(operation = @Operation(description = "Get elements", operationId = "getElements", tags = "element",
+    @RouterOperation(operation = @Operation(description = "Get elements", operationId = "getElementsFunction", tags = "element",
             responses = @ApiResponse(responseCode = "200", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Element.class))))))
     public Supplier<List<Element>> getElements() {
         return elementService::getElements;
